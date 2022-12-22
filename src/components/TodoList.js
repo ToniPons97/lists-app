@@ -12,7 +12,7 @@ export class TodoList extends React.Component {
         this.setState({items: [...this.state.items, input.value]});
         
         input.focus();
-        setTimeout(() => input.value = '', 100);
+        setTimeout(() => input.value = '', 50);
     }
 
 
