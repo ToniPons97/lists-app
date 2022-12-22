@@ -9,10 +9,27 @@ export class TodoList extends React.Component {
 
     addTodoItem = () => {
         const input = this._inputRef.current;
-        this.setState({items: [...this.state.items, input.value]});
+        const value = input.value;
+
+        if (value !== '') {
+            this.setState({items: [...this.state.items, value]});
+            input.focus();
+            setTimeout(() => input.value = '', 50);
+        }
         
-        input.focus();
-        setTimeout(() => input.value = '', 50);
+    }
+
+    handleListReset = () => {
+        const input = this._inputRef.current;
+        const value = input.value;
+        
+        if (this.state.items.length > 0) {
+            this.setState({items: []});
+            input.focus();
+    
+            if (value !== '')
+                input.value = '';
+        }
     }
 
 
@@ -23,10 +40,12 @@ export class TodoList extends React.Component {
                 <input ref={this._inputRef} placeholder="Example: buy milk." autoComplete="off" />
                 <br />
                 <button onClick={this.addTodoItem}>Add todo!</button>
+                <button onClick={this.handleListReset}>Reset todo</button>
 
                 <ul>
                     {this.state.items.map((item, index) => <li key={item+index}>{item}</li>)}
                 </ul>
+
             </div>
         );
     }
