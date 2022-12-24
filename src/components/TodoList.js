@@ -38,7 +38,7 @@ export class TodoList extends React.Component {
 
 
     render() {
-        const redButtonStyles = "text-red-600 text-sm bg-gray-100 border-black border-solid border-2 h-30 w-16 rounded-md p-1";
+        const redButtonStyles = "hover:bg-red-200 hover:text-white text-red-600 text-sm bg-gray-100 border-black border-solid border-2 h-30 w-16 rounded-md p-1";
         const itemsStyles = "flex flex-col flex-wrap gap-1 text-white-400 border-black border-solid border-2 w-28 m-4 p-2";
         return (
             <div className="p-4 bg-green-100 flex flex-col items-center justify-center ">
@@ -46,7 +46,7 @@ export class TodoList extends React.Component {
                 <input ref={this._inputRef} placeholder="Example: buy milk." autoComplete="off" />
                 <br />
                 <div className="flex flex-row justify-center items-center gap-3">
-                    <button className="text-green-600 text-sm bg-gray-100 border-black border-solid border-2 h-30 rounded-md p-1" 
+                    <button className="hover:bg-sky-200 hover:text-white text-green-600 text-sm bg-gray-100 border-black border-solid border-2 h-30 rounded-md p-1" 
                         onClick={this.addTodoItem}>Add todo!</button>
                     <button className={redButtonStyles} onClick={this.handleListReset}>Reset</button>
                 </div>
