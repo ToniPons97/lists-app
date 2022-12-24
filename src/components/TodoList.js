@@ -4,7 +4,7 @@ export class TodoList extends React.Component {
     _inputRef = createRef();
     
     state = {
-        items: ['Bread', 'Milk', 'Water', 'Tuna']
+        items: ['Buy bread', 'Milk the cow', 'Water the plants', 'Prepare tuna salad']
     };
 
     addTodoItem = () => {
@@ -38,27 +38,30 @@ export class TodoList extends React.Component {
 
 
     render() {
-        const redButtonStyles = "text-red-600 text-sm bg-gray-100 border-black border-solid border-2 h-30 rounded-md p-1";
-        const itemsStyles = "text-white-400 border-black border-solid border-1";
+        const redButtonStyles = "text-red-600 text-sm bg-gray-100 border-black border-solid border-2 h-30 w-16 rounded-md p-1";
+        const itemsStyles = "flex flex-col flex-wrap gap-1 text-white-400 border-black border-solid border-2 w-28 m-4 p-2";
         return (
-            <div className="max-w-sm bg-green-100 flex flex-col items-center justify-center ">
+            <div className="p-4 bg-green-100 flex flex-col items-center justify-center ">
                 <h1 className="font-bold underline">Todo List</h1>
                 <input ref={this._inputRef} placeholder="Example: buy milk." autoComplete="off" />
                 <br />
                 <div className="flex flex-row justify-center items-center gap-3">
                     <button className="text-green-600 text-sm bg-gray-100 border-black border-solid border-2 h-30 rounded-md p-1" 
                         onClick={this.addTodoItem}>Add todo!</button>
-                    <button className={redButtonStyles} onClick={this.handleListReset}>Reset todo</button>
+                    <button className={redButtonStyles} onClick={this.handleListReset}>Reset</button>
                 </div>
 
                 <ul>
                     {
                         this.state.items.map((item, index) => 
-                        {return (
-                            <li key={item+index} className={itemsStyles}> {item}
-                                <button className={redButtonStyles} value={item} onClick={this.handleItemDeletion}>remove</button>
-                            </li>
-                        );})
+                        {
+                            return (
+                                <li key={item+index} className={itemsStyles}>
+                                    <span className="text-gray-500">{item}</span>
+                                    <button className={redButtonStyles} value={item} onClick={this.handleItemDeletion}>remove</button>
+                                </li>
+                            );
+                        })
                     }
                 </ul>
                     {!!(this.state.items.length === 0)&& <h4 className="text-red-600 font-medium">No todos found!</h4>}
