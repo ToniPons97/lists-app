@@ -49,7 +49,7 @@ export class TodoList extends React.Component {
         const greenButtonStyle = `text-green-600 text-sm bg-gray-100 border-black border-solid 
             border-2 rounded-md p-1 transition ease-in-out m-0 hover:bg-sky-200 hover:text-white`;
         return (
-            <div className="p-4 bg-green-100 flex flex-col items-center justify-center ">
+            <div className="p-4 bg-green-100 flex flex-col items-center justify-center">
                 <h1 className="font-bold underline">Todo List</h1>
                 <input className={inputStyle} ref={this._inputRef} placeholder="Example: buy milk." autoComplete="off" />
                 <br />
@@ -65,7 +65,7 @@ export class TodoList extends React.Component {
                             return (
                                 <li key={item+index} className={itemsStyles}>
                                     <span className="text-gray-500">{item}</span>
-                                    <button className={redButtonStyles} value={item} onClick={this.handleItemDeletion}>remove</button>
+                                    <button className={redButtonStyles} value={item} onClick={this.handleItemDeletion}>Done</button>
                                 </li>
                             );
                         })
